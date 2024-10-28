@@ -1,0 +1,174 @@
+﻿
+<form id="formCadastro" method="post">
+    <div class="row">
+        <div class="col-md-6 mb-1" >
+            <div class="form-group">
+                <label for="Nome">Nome:</label>
+                <input required="required" type="text" class="form-control" id="Nome" name="Nome" placeholder="Ex.: João" maxlength="50">
+
+            </div>
+        </div>
+        <div class="col-md-6 mb-1">
+            <div class="form-group">
+                <label for="Sobrenome">Sobrenome:</label>
+                <input required="required" type="text" class="form-control" id="Sobrenome" name="Sobrenome" placeholder="Ex.: da Silva" maxlength="255">
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-6 mb-1">
+            <div class="form-group">
+                <label for="CPF">CPF:</label>
+                <input required="required" type="text" class="form-control" id="CPF" name="CPF" placeholder="Ex.: 010.011.111-00" maxlength="14">
+
+            </div>
+        </div>
+        <div class="col-md-6 mb-1">
+            <div class="form-group">
+                <label for="Nacionalidade">Nacionalidade:</label>
+                <input required="required" type="text" class="form-control" id="Nacionalidade" name="Nacionalidade" placeholder="Ex.: brasileira" maxlength="50">
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-4 mb-1">
+            <div class="form-group">
+                <label for="CEP">CEP:</label>
+                <input required="required" type="text" class="form-control" id="CEP" name="CEP" placeholder="Ex.: 01011-100" maxlength="9">
+
+            </div>
+        </div>
+        <div class="col-md-4 mb-1">
+            <div class="form-group">
+                <label for="Estado">Estado:</label>
+                <select required="required" id="Estado" class="form-control" name="Estado">
+                    <option value="">Selecione</option>
+                    <option value="SP">São Paulo</option>
+                    <option value="PE">Pernambuco</option>
+                </select>
+
+            </div>
+        </div>
+        <div class="col-md-4 mb-1">
+            <div class="form-group">
+                <label for="Cidade">Cidade:</label>
+                <input required="required" type="text" class="form-control" id="Cidade" name="Cidade" maxlength="50" placeholder="Ex.: São Paulo">
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-12 mb-1">
+            <div class="form-group">
+                <label for="Logradouro">Logradouro:</label>
+                <input required="required" type="text" class="form-control" id="Logradouro" name="Logradouro" placeholder="Ex.: Rua Boa Vista 253" maxlength="500">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="mb-3 row">
+        <div class="col-md-6 mb-1">
+            <div class="form-group">
+                <label for="Email">E-mail:</label>
+                <input required="required" type="text" class="form-control" id="Email" name="Email" placeholder="Ex.: email@email.com" maxlength="2079">
+
+            </div>
+        </div>
+        <div class="col-md-6 mb-1">
+            <div class="form-group">
+                <label for="Telefone">Telefone:</label>
+                <input required="required" type="tel" class="form-control" id="Telefone" name="Telefone" placeholder="Ex.: (11) 2020-3030" maxlength="15">
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="row mb-3">
+        <div class="col-lg-6">
+            <div class="form-group">
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#beneficiariosModal">
+                    Beneficiários
+                </button>
+
+            </div>
+        </div>
+
+        <div class="col-lg-6 d-flex justify-content-end">
+            <input type="hidden" id="Id" name="Id">
+            <button type="submit" class="btn btn-sm btn-success me-2">
+                Salvar
+            </button>
+            <button type="button" class="btn btn-sm btn-primary" onclick="window.location.href='@Url.Action("Index", "Cliente")'">
+                Voltar
+            </button>
+        </div>
+    </div>
+
+
+</form>
+
+
+<div class="modal fade" id="beneficiariosModal" tabindex="-1" role="dialog" aria-labelledby="beneficiariosModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="beneficiariosModalLabel">Beneficiários</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Formulário para incluir beneficiários -->
+                <div class="d-flex align-items-center mb-3">
+                    <input type="hidden" id="beneficiarioId" name="beneficiarioId">
+                    <input type="hidden" id="tempId" name="tempId">
+                    <div class="form-group me-3">
+                        <label for="cpfBeneficiario" class="me-2">CPF:</label>
+                        <input type="text" class="form-control" id="cpfBeneficiario" name="cpfBeneficiario" placeholder="Ex.: 010.011.111-00" maxlength="14">
+                    </div>
+                    <div class="form-group me-3 flex-grow-1">
+                        <label for="nomeBeneficiario" class="me-2">Nome:</label>
+                        <input type="text" class="form-control w-100" id="nomeBeneficiario" name="nomeBeneficiario" placeholder="Ex.: Maria" maxlength="50">
+                    </div>
+                    <button type="button" class="btn btn-success ms-auto me-2 mt-4 px-4" id="btnIncluirBeneficiario">Incluir</button>
+                </div>
+
+                <!-- Tabela para listar beneficiários -->
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>CPF</th>
+                            <th>Nome</th>
+                            <th>
+                                <div class="d-flex justify-content-end me-4">
+                                    Ações
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody id="beneficiariosList">                       
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
